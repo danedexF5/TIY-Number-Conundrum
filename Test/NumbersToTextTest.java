@@ -82,5 +82,20 @@ public void numberIsFortyNineTextIsFortyNine(){
       assertThat(textNumber, is("seventy three"));
 
    }
+   @Test
+   /**
+    * Given a NumbersToText
+    * When a number is 538
+    * Then text is Five Hundred Thirty Eight
+    */
+   public void numberIs538TextIsFiveHundredThirtyEight(){
+      //Arrange
+
+      //Act
+      String textNumber = NumbersToText.toText(538);
+
+      //Assert
+      assertThat(textNumber, is("five hundered thirty eight"));
+   }
 
 }

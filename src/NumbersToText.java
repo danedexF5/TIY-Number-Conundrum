@@ -3,7 +3,115 @@
  */
 public class NumbersToText {
 
-    public static String toText(int number){
+    public static String toText(int number) {
+
+
+        int thousands = number / 1000;
+        String thousandsAsText = "";
+
+        /*if number is 3 digits 'return hundredsAsText + " hundred " + tensAsText.
+        Else if return tensAsText + onesAsText*/
+        if ((number <= 999999) && (number > 999)) {
+            thousandsAsText = hundredsToText(thousands) + "thousands ";
+            number = number % 1000;
+        }
+        return thousandsAsText + hundredsToText(number);
+    }
+
+
+    public static String hundredsToText(int number){
+        int hundreds = number / 100;
+        String hundredsAsText = "";
+
+        if ((number <= 999) && (number > 99)) {
+            hundredsAsText = zeroToNineteen(hundreds) + " hundred ";
+            number = number % 100;
+        }
+
+        String tensAsText = "";
+
+        if ((number <= 99) && (number >= 20)) {
+            tensAsText = twentyToNinetyNine(number);
+        } else if ((number <= 19) && (number >= 0)) {
+            tensAsText = zeroToNineteen(number);
+        }
+
+        return hundredsAsText + tensAsText;
+    }
+
+    public static String zeroToNineteen(int number){
+        String onesAsText;
+        switch (number) {
+            case 0:
+                onesAsText = "zero ";
+                break;
+            case 1:
+                onesAsText = "one ";
+                break;
+            case 2:
+                onesAsText = "two ";
+                break;
+            case 3:
+                onesAsText = "three ";
+                break;
+            case 4:
+                onesAsText = "four ";
+                break;
+            case 5:
+                onesAsText = "five ";
+                break;
+            case 6:
+                onesAsText = "six ";
+                break;
+            case 7:
+                onesAsText = "seven ";
+                break;
+            case 8:
+                onesAsText = "eight ";
+                break;
+            case 9:
+                onesAsText = "nine ";
+                break;
+            case 10:
+                onesAsText = "ten ";
+                break;
+            case 11:
+                onesAsText = "eleven ";
+                break;
+            case 12:
+                onesAsText = "twelve ";
+                break;
+            case 13:
+                onesAsText = "thirteen ";
+                break;
+            case 14:
+                onesAsText = "fourteen ";
+                break;
+            case 15:
+                onesAsText = "fifteen ";
+                break;
+            case 16:
+                onesAsText = "sixteen ";
+                break;
+            case 17:
+                onesAsText = "seventeen ";
+                break;
+            case 18:
+                onesAsText = "eighteen ";
+                break;
+            case 19:
+                onesAsText = "nineteen ";
+                break;
+            default:
+                onesAsText = "";
+                break;
+        }
+        return onesAsText;
+
+    }
+
+
+    public static String twentyToNinetyNine(int number) {
         int tens = number / 10;
         int ones = number % 10;
         String tensAsText;
@@ -11,82 +119,68 @@ public class NumbersToText {
 
         switch (tens) {
             case 2:
-                tensAsText = "twenty";
+                tensAsText = "twenty ";
                 break;
             case 3:
-                tensAsText = "thirty";
+                tensAsText = "thirty ";
                 break;
             case 4:
-                tensAsText = "forty";
+                tensAsText = "forty ";
                 break;
             case 5:
-                return "fifty";
+                tensAsText = "fifty ";
+                break;
             case 6:
-                return "sixty";
+                tensAsText = "sixty ";
+                break;
             case 7:
-                tensAsText = "seventy";
+                tensAsText = "seventy ";
                 break;
             case 8:
-                return "eighty";
+                tensAsText = "eighty ";
+                break;
             case 9:
-                return "ninety";
+                tensAsText = "ninety ";
+                break;
             default:
-                return "";
+                tensAsText = "";
+                break;
         }
 
-        switch (ones){
-            case 0:
-                return "zero";
+        switch (ones) {
+
             case 1:
-                return "one";
+                onesAsText = "one ";
+                break;
             case 2:
-                return "two";
+                onesAsText = "two ";
+                break;
             case 3:
-                onesAsText = "three";
+                onesAsText = "three ";
                 break;
             case 4:
-                return "four";
+                onesAsText = "four ";
+                break;
             case 5:
-                onesAsText = "five";
+                onesAsText = "five ";
                 break;
             case 6:
-                return "six";
+                onesAsText = "six ";
+                break;
             case 7:
-                return "seven";
+                onesAsText = "seven ";
+                break;
             case 8:
-                onesAsText = "eight";
+                onesAsText = "eight ";
                 break;
             case 9:
-                onesAsText = "nine";
+                onesAsText = "nine ";
                 break;
-            case 10:
-                return "ten";
-            case 11:
-                return "eleven";
-            case 12:
-                return "twelve";
-            case 13:
-                return "thirteen";
-            case 14:
-                return "fourteen";
-            case 15:
-                return "fifteen";
-            case 16:
-                return "sixteen";
-            case 17:
-                return "seventeen";
-            case 18:
-                return "eighteen";
-            case 19:
-                return "nineteen";
             default:
-                return "";
+                onesAsText = "";
+                break;
         }
-        return tensAsText + " " + onesAsText;
-
-
-
+        return tensAsText + "" + onesAsText;
     }
-
 
 }
